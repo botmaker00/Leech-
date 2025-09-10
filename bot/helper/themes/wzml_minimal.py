@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 class WZMLStyle:
-    # ----------------------
- async def start(client, message) ---> __main__.py
+    #  async def start(client, message) ---> __main__.py
     ST_BN1_NAME = "Owner"
     ST_BN1_URL = "https://t.me/V_Sbotmaker"
     ST_BN2_NAME = "Updates"
