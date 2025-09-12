@@ -202,10 +202,10 @@ class WZMLStyle:
     NON_ENGINE = "<b><i>\n┠ ᴇɴɢɪɴᴇ:</i></b> {Engine}"
 
     ####--------OVERALL MSG FOOTER----------
-    USER = "<b><i>\n┠ ᴜsᴇʀ:</i></b> <code>{User}</code> | "
+    USER = "\n┠ <b><i>ᴜsᴇʀ:</i></b> <code>{User}</code> | "
     ID = "<b><i>ɪᴅ:</i></b> <code>{Id}</code>"
-    BTSEL = "<b><i>\n┠ sᴇʟᴇᴄᴛ:</i></b> {Btsel}"
-    CANCEL = "<b><i>\n┖ {Cancel}\n\n</i></b>"
+    BTSEL = "\n┠ <b><i>sᴇʟᴇᴄᴛ:</i></b> {Btsel}"
+    CANCEL = "\n┖ <b><i>{Cancel}\n\n</i></b>"
 
     ####------FOOTER--------
     FOOTER = "╭───────✦✧✦──────✘\n ⌬ <b><i>ʙᴏᴛ sᴛᴀᴛs</i></b>"
