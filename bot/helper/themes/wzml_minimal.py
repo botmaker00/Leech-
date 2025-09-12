@@ -208,7 +208,7 @@ class WZMLStyle:
     CANCEL = "<b><i>\n┖ {Cancel}\n\n</i></b>"
 
     ####------FOOTER--------
-    FOOTER = "╭───────✦✧✦───────✘\n ⌬ <b><i>ʙᴏᴛ sᴛᴀᴛs</i></b>"
+    FOOTER = "╭───────✦✧✦──────✘\n ⌬ <b><i>ʙᴏᴛ sᴛᴀᴛs</i></b>"
     TASKS = "<b><i>┠ ᴛᴀsᴋs:</i></b> {Tasks}\n"
     BOT_TASKS = "<b><i>┠ ᴛᴀsᴋs:</i></b> {Tasks}/{Ttask} | <b><i>ᴀᴠʟ:</i></b> {Free}\n"
     Cpu = "<b><i>┠ ᴄᴘᴜ:</i></b> {cpu}% | "
@@ -216,7 +216,7 @@ class WZMLStyle:
     Ram = "<b><i>\n┠ ʀᴀᴍ:</i></b> {ram}% | "
     uptime = "<b><i>ᴜᴘᴛɪᴍᴇ:</i></b> {uptime}"
     DL = "<b><i>\n┠ ᴅʟ:</i></b> {DL}/s | "
-    UL = "<b><i>ᴜʟ:</i></b> {UL}/s\n╰───────✦✧✦───────✘"
+    UL = "<b><i>ᴜʟ:</i></b> {UL}/s\n╰───────✦✧✦──────✘"
 
     ###--------BUTTONS-------
     PREVIOUS = "⫷"
@@ -269,7 +269,7 @@ class WZMLStyle:
 • <b>-s</b> or <b>-set</b>: <b><i>sᴇᴛ ᴅɪʀᴇᴄᴛʟʏ ᴠɪᴀ ᴀʀɢ</i></b>"""
 
 
-    UNIVERSAL = """╭───────✦✧✦───────✘ 
+    UNIVERSAL = """╭───────✦✧✦──────✘ 
     <b><i>㊂ ᴜɴɪᴠᴇʀsᴀʟ sᴇᴛᴛɪɴɢs : {NAME}</i></b>
 
 ┎<b><i> ʏᴛ-ᴅʟᴘ ᴏᴘᴛɪᴏɴs :</i></b> <b><code>{YT}</code></b>
@@ -279,9 +279,9 @@ class WZMLStyle:
 ┠<b><i> ᴍᴇᴅɪᴀɪɴғᴏ ᴍᴏᴅᴇ :</i></b> <code>{MEDIAINFO}</code>
 ┠<b><i> sᴀᴠᴇ ᴍᴏᴅᴇ :</i></b> <code>{SAVE_MODE}</code>
 ┠<b><i> ᴜsᴇʀ ʙᴏᴛ ᴘᴍ :</i></b> <code>{BOT_PM}</code>
-╰───────✦✧✦───────✘"""
+╰───────✦✧✦──────✘"""
 
-    MIRROR = """╭───────✦✧✦───────✘ 
+    MIRROR = """╭───────✦✧✦──────✘ 
     <b><i>㊂ ᴍɪʀʀᴏʀ/ᴄʟᴏɴᴇ sᴇᴛᴛɪɴɢs : {NAME}</i></b>
 
 ┎<b><i> ʀᴄʟᴏɴᴇ ᴄᴏɴғɪɢ :</i></b> <i>{RCLONE}</i>
@@ -292,9 +292,9 @@ class WZMLStyle:
 ┠<b><i> ᴜsᴇʀ ᴛᴅ ᴍᴏᴅᴇ :</i></b> <i>{TMODE}</i>
 ┠<b><i> ᴛᴏᴛᴀʟ ᴜsᴇʀ ᴛᴅ(s) :</i></b> <i>{USERTD}</i>
 ┠<b><i> ᴅᴀɪʟʏ ᴍɪʀʀᴏʀ :</i></b> <code>{DM}</code> per day
-╰───────✦✧✦───────✘"""
+╰───────✦✧✦──────✘"""
 
-    LEECH = """╭───────✦✧✦───────✘
+    LEECH = """╭───────✦✧✦──────✘
     <b><i>㊂ ʟᴇᴇᴄʜ sᴇᴛᴛɪɴɢs ғᴏʀ {NAME}</i></b>
 
 ┎<b><i> ᴅᴀɪʟʏ ʟᴇᴇᴄʜ : </i></b><code>{DL}</code> per day
@@ -309,4 +309,4 @@ class WZMLStyle:
 ┠<b><i> ʟᴇᴇᴄʜ ᴅᴜᴍᴘs :</i></b> <code>{LDUMP}</code>
 ┠<b><i> ʟᴇᴇᴄʜ ʀᴇᴍɴᴀᴍᴇ :</i></b> <code>{LREMNAME}</code>
 ┖<b><i> ʟᴇᴇᴄʜ ᴍᴇᴛᴀᴅᴀᴛᴀ :</i></b> <code>{LMETA}</code>
-╰───────✦✧✦───────✘"""
+╰───────✦✧✦──────✘"""
