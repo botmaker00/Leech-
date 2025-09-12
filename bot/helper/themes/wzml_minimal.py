@@ -60,26 +60,26 @@ class WZMLStyle:
 ┃ <b><i>ᴛᴏᴛᴀʟ ᴅɪsᴋ ᴡʀɪᴛᴇ :</i></b> {disk_write}
 ┖ <b><i>ᴜ :</i></b> {disk_u} | <b><i>ғ :</i></b> {disk_f} | <b><i>ᴛ :</i></b> {disk_t}
     """
-    SYS_STATS = """<b><i>⌬ ᴏs sʏsᴛᴇᴍ :</i></b>
+    SYS_STATS = """<blockquote><b><i>⌬ ᴏs sʏsᴛᴇᴍ :</i></b>
 ┠ <b><i>ᴏs ᴜᴘᴛɪᴍᴇ :</i></b> {os_uptime}
 ┠ <b><i>ᴏs ᴠᴇʀsɪᴏɴ :</i></b> {os_version}
-┖ <b><i>ᴏs ᴀʀᴄʜ :</i></b> {os_arch}
+┖ <b><i>ᴏs ᴀʀᴄʜ :</i></b> {os_arch}</blockquote>
 
-<b><i>⌬ ɴᴇᴛᴡᴏʀᴋ sᴛᴀᴛs :</i></b>
+<blockquote><b><i>⌬ ɴᴇᴛᴡᴏʀᴋ sᴛᴀᴛs :</i></b>
 ┠ <b><i>ᴜᴘʟᴏᴀᴅ ᴅᴀᴛᴀ:</i></b> {up_data}
 ┠ <b><i>ᴅᴏᴡɴʟᴏᴀᴅ ᴅᴀᴛᴀ:</i></b> {dl_data}
 ┠ <b><i>ᴘᴋᴛs sᴇɴᴛ:</i></b> {pkt_sent}k
 ┠ <b><i>ᴘᴋᴛs ʀᴇᴄᴇɪᴠᴇᴅ:</i></b> {pkt_recv}k
-┖ <b><i>ᴛᴏᴛᴀʟ ɪ/ᴏ ᴅᴀᴛᴀ:</i></b> {tl_data}
+┖ <b><i>ᴛᴏᴛᴀʟ ɪ/ᴏ ᴅᴀᴛᴀ:</i></b> {tl_data}</blockquote>
 
-<b><i>┎ ᴄᴘᴜ :</i></b>
+<blockquote><b><i>┎ ᴄᴘᴜ :</i></b>
 ┃ {cpu_bar} {cpu}%
 ┠ <b><i>ᴄᴘᴜ ғʀᴇQᴜᴇɴᴄʏ :</i></b> {cpu_freq}
 ┠ <b><i>sʏsᴛᴇᴍ ᴀᴠɢ ʟᴏᴀᴅ :</i></b> {sys_load}
 ┠ <b><i>ᴘ-ᴄᴏʀᴇ(s) :</i></b> {p_core} | <b><i>ᴠ-ᴄᴏʀᴇ(s) :</i></b> {v_core}
 ┠ <b><i>ᴛᴏᴛᴀʟ ᴄᴏʀᴇ(s) :</i></b> {total_core}
 ┖ <b><i>ᴜsᴀʙʟᴇ ᴄᴘᴜ(s) :</i></b> {cpu_use}
-    """
+   </blockquote> """
     REPO_STATS = """<b><i>⌬ ʀᴇᴘᴏ sᴛᴀᴛɪsᴛɪᴄs :</i></b>
 ┠ <b><i>ʙᴏᴛ ᴜᴘᴅᴀᴛᴇᴅ :</i></b> {last_commit}
 ┠ <b><i>ᴄᴜʀʀᴇɴᴛ ᴠᴇʀsɪᴏɴ :</i></b> {bot_version}
@@ -88,7 +88,7 @@ class WZMLStyle:
 
 <b><i>⌬ ʀᴇᴍᴀʀᴋs :</i></b> <code>{remarks}</code>
     """
-    BOT_LIMITS = """<b><i>⌬ ʙᴏᴛ ʟɪᴍɪᴛᴀᴛɪᴏɴs :</i></b>
+    BOT_LIMITS = """<blockquote><b><i>⌬ ʙᴏᴛ ʟɪᴍɪᴛᴀᴛɪᴏɴs :</i></b>
 ┠ <b><i>ᴅɪʀᴇᴄᴛ ʟɪᴍɪᴛ :</i></b> {DL} GB
 ┠ <b><i>ᴛᴏʀʀᴇɴᴛ ʟɪᴍɪᴛ :</i></b> {TL} GB
 ┠ <b><i>ɢᴅʀɪᴠᴇ ʟɪᴍɪᴛ :</i></b> {GL} GB
@@ -96,13 +96,13 @@ class WZMLStyle:
 ┠ <b><i>ᴘʟᴀʏʟɪsᴛ ʟɪᴍɪᴛ :</i></b> {PL}
 ┠ <b><i>ᴍᴇɢᴀ ʟɪᴍɪᴛ :</i></b> {ML} GB
 ┠ <b><i>ᴄʟᴏɴᴇ ʟɪᴍɪᴛ :</i></b> {CL} GB
-┖ <b><i>ʟᴇᴇᴄʜ ʟɪᴍɪᴛ :</i></b> {LL} GB
+┖ <b><i>ʟᴇᴇᴄʜ ʟɪᴍɪᴛ :</i></b> {LL} GB</blockquote>
 
-<b><i>┎ ᴛᴏᴋᴇɴ ᴠᴀʟɪᴅɪᴛʏ :</i></b> {TV}
+<blockquote><b><i>┎ ᴛᴏᴋᴇɴ ᴠᴀʟɪᴅɪᴛʏ :</i></b> {TV}
 ┠ <b><i>ᴜsᴇʀ ᴛɪᴍᴇ ʟɪᴍɪᴛ :</i></b> {UTI} / task
 ┠ <b><i>ᴜsᴇʀ ᴘᴀʀᴀʟʟᴇʟ ᴛᴀsᴋs :</i></b> {UT}
 ┖ <b><i>ʙᴏᴛ ᴘᴀʀᴀʟʟᴇʟ ᴛᴀsᴋs :</i></b> {BT}
-    """
+    <blockquote>"""
     # ---------------------
 
     # async def restart(client, message): ---> __main__.py
@@ -110,11 +110,11 @@ class WZMLStyle:
     # ---------------------
 
     # async def restart_notification(): ---> __main__.py
-    RESTART_SUCCESS = """<b><i>⌬ ʀᴇsᴛᴀʀᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ!</i></b>
+    RESTART_SUCCESS = """<blockquote><b><i>⌬ ʀᴇsᴛᴀʀᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ!</i></b>
 ┠ <b><i>ᴅᴀᴛᴇ:</i></b> {date}
 ┠ <b><i>ᴛɪᴍᴇ:</i></b> {time}
 ┠ <b><i>ᴛɪᴍᴇᴢᴏɴᴇ:</i></b> {timz}
-┖ <b><i>ᴠᴇʀsɪᴏɴ:</i></b> {version}"""
+┖ <b><i>ᴠᴇʀsɪᴏɴ:</i></b> {version}<blockquote>"""
     RESTARTED = """<b><i>⌬ ʙᴏᴛ ʀᴇsᴛᴀʀᴛᴇᴅ!</i></b>"""
     # ---------------------
 
@@ -178,15 +178,15 @@ class WZMLStyle:
     STATUS_NAME = "<b><i>{Name}</i></b>"
 
     #####---------PROGRESSIVE STATUS-------
-    BAR = "\n┃ {Bar}"
-    PROCESSED = "<b><i>\n┠ ᴘʀᴏᴄᴇssᴇᴅ:</i></b> {Processed}"
-    STATUS = '<b><i>\n┠ sᴛᴀᴛᴜs:</i></b> <a href="{Url}">{Status}</a>'
-    ETA = "<b><i> | ᴇᴛᴀ:</i></b> {Eta}"
-    SPEED = "<b><i>\n┠ sᴘᴇᴇᴅ:</i></b> {Speed}"
-    ELAPSED = "<b><i> | ᴇʟᴀᴘsᴇᴅ:</i></b> {Elapsed}"
-    ENGINE = "<b><i>\n┠ ᴇɴɢɪɴᴇ:</i></b> {Engine}"
-    STA_MODE = "<b><i>\n┠ ᴍᴏᴅᴇ:</i></b> {Mode}"
-    SEEDERS = "<b><i>\n┠ sᴇᴇᴅᴇʀs:</i></b> {Seeders} | "
+   BAR = "\n┏━━❪ Animeworld 💜❫━━━✘\n┃ <blockquote>{Bar}</blockquote>"
+    PROCESSED = "\n┠ <b><i>ᴘʀᴏᴄᴇssᴇᴅ:</i></b> {Processed}"
+    STATUS = '\n┠ <b><i>sᴛᴀᴛᴜs:</i></b> <a href="{Url}">{Status}</a>'
+    ETA = "| <b><i> ᴇᴛᴀ:</i></b> {Eta}"
+    SPEED = "\n┠ <b><i>sᴘᴇᴇᴅ:</i></b> {Speed}"
+    ELAPSED = " | <b><i>ᴇʟᴀᴘsᴇᴅ:</i></b> {Elapsed}"
+    ENGINE = "\n┠ <b><i>ᴇɴɢɪɴᴇ:</i></b> {Engine}"
+    STA_MODE = "\n┠ <b><i>ᴍᴏᴅᴇ:</i></b> {Mode}"
+    SEEDERS = "\n┠ <b><i>sᴇᴇᴅᴇʀs:</i></b> {Seeders} | "
     LEECHERS = "<b><i>ʟᴇᴇᴄʜᴇʀs:</i></b> {Leechers}"
 
     ####--------SEEDING----------
@@ -208,15 +208,15 @@ class WZMLStyle:
     CANCEL = "<b><i>\n┖ {Cancel}\n\n</i></b>"
 
     ####------FOOTER--------
-    FOOTER = "<b><i>⌬ ʙᴏᴛ sᴛᴀᴛs</i></b>\n"
+    FOOTER = "╭───────✦✧✦───────✘ ⌬ <b><i>ʙᴏᴛ sᴛᴀᴛs</i></b>"
     TASKS = "<b><i>┠ ᴛᴀsᴋs:</i></b> {Tasks}\n"
     BOT_TASKS = "<b><i>┠ ᴛᴀsᴋs:</i></b> {Tasks}/{Ttask} | <b><i>ᴀᴠʟ:</i></b> {Free}\n"
     Cpu = "<b><i>┠ ᴄᴘᴜ:</i></b> {cpu}% | "
     FREE = "<b><i>ғ:</i></b> {free} [{free_p}%]"
     Ram = "<b><i>\n┠ ʀᴀᴍ:</i></b> {ram}% | "
     uptime = "<b><i>ᴜᴘᴛɪᴍᴇ:</i></b> {uptime}"
-    DL = "<b><i>\n┖ ᴅʟ:</i></b> {DL}/s | "
-    UL = "<b><i>ᴜʟ:</i></b> {UL}/s"
+    DL = "<b><i>\n┠ ᴅʟ:</i></b> {DL}/s | "
+    UL = "<b><i>ᴜʟ:</i></b> {UL}/s\n╰───────✦✧✦───────✘"
 
     ###--------BUTTONS-------
     PREVIOUS = "⫷"
@@ -247,26 +247,30 @@ class WZMLStyle:
     # ---------------------
 
     # async def mirror_status(_, message): ----> status.py
-    NO_ACTIVE_DL = """<b><i>ɴᴏ ᴀᴄᴛɪᴠᴇ ᴅᴏᴡɴʟᴏᴀᴅs!</i></b>
+    NO_ACTIVE_DL = """<blockquote><b><i>ɴᴏ ᴀᴄᴛɪᴠᴇ ᴅᴏᴡɴʟᴏᴀᴅs!</i></b>
     
 <b><i>⌬ ʙᴏᴛ sᴛᴀᴛs</i></b>
 ┠ <b><i>ᴄᴘᴜ:</i></b> {cpu}% | <b><i>ғ:</i></b> {free} [{free_p}%]
 ┖ <b><i>ʀᴀᴍ:</i></b> {ram} | <b><i>ᴜᴘᴛɪᴍᴇ:</i></b> {uptime}
-    """
+    </blockquote>"""
     # ---------------------
 
     # USER Setting --> user_setting.py
-    USER_SETTING = """<b><i>㊂ ᴜsᴇʀ sᴇᴛᴛɪɴɢs :</i></b>
+USER_SETTING = """╭───────✦✧✦───────✘ 
+<blockquote><b><i>㊂ ᴜsᴇʀ sᴇᴛᴛɪɴɢs :</i></b>
         
-┎<b><i> ɴᴀᴍᴇ :</i></b> {NAME} ( <code>{ID}</code> )
-┠<b><i> ᴜsᴇʀɴᴀᴍᴇ :</i></b> {USERNAME}
-┠<b><i> ᴛᴇʟᴇɢʀᴀᴍ ᴅᴄ :</i></b> {DC}
-┖<b><i> ʟᴀɴɢᴜᴀɢᴇ :</i></b> {LANG}
+┎ <b><i>ɴᴀᴍᴇ :</i></b> {NAME} ( <code>{ID}</code> )
+┠ <b><i>ᴜsᴇʀɴᴀᴍᴇ :</i></b> {USERNAME}
+┠ <b><i>ᴛᴇʟᴇɢʀᴀᴍ ᴅᴄ :</i></b> {DC}
+┠ <b><i>ʟᴀɴɢᴜᴀɢᴇ :</i></b> {LANG}</blockquote>
+╰───────✦✧✦───────✘
 
 <b><i>➲ ᴀᴠᴀɪʟᴀʙʟᴇ ᴀʀɢs:</i></b>
 • <b>-s</b> or <b>-set</b>: <b><i>sᴇᴛ ᴅɪʀᴇᴄᴛʟʏ ᴠɪᴀ ᴀʀɢ</i></b>"""
 
-    UNIVERSAL = """<b><i>㊂ ᴜɴɪᴠᴇʀsᴀʟ sᴇᴛᴛɪɴɢs : {NAME}</i></b>
+
+    UNIVERSAL = """╭───────✦✧✦───────✘ 
+    <b><i>㊂ ᴜɴɪᴠᴇʀsᴀʟ sᴇᴛᴛɪɴɢs : {NAME}</i></b>
 
 ┎<b><i> ʏᴛ-ᴅʟᴘ ᴏᴘᴛɪᴏɴs :</i></b> <b><code>{YT}</code></b>
 ┠<b><i> ᴅᴀɪʟʏ ᴛᴀsᴋs :</i></b> <code>{DT}</code> per day
@@ -274,9 +278,11 @@ class WZMLStyle:
 ┠<b><i> ᴜsᴇʀ sᴇssɪᴏɴ :</i></b> <code>{USESS}</code>
 ┠<b><i> ᴍᴇᴅɪᴀɪɴғᴏ ᴍᴏᴅᴇ :</i></b> <code>{MEDIAINFO}</code>
 ┠<b><i> sᴀᴠᴇ ᴍᴏᴅᴇ :</i></b> <code>{SAVE_MODE}</code>
-┖<b><i> ᴜsᴇʀ ʙᴏᴛ ᴘᴍ :</i></b> <code>{BOT_PM}</code>"""
+┠<b><i> ᴜsᴇʀ ʙᴏᴛ ᴘᴍ :</i></b> <code>{BOT_PM}</code>
+╰───────✦✧✦───────✘"""
 
-    MIRROR = """<b><i>㊂ ᴍɪʀʀᴏʀ/ᴄʟᴏɴᴇ sᴇᴛᴛɪɴɢs : {NAME}</i></b>
+    MIRROR = """╭───────✦✧✦───────✘ 
+    <b><i>㊂ ᴍɪʀʀᴏʀ/ᴄʟᴏɴᴇ sᴇᴛᴛɪɴɢs : {NAME}</i></b>
 
 ┎<b><i> ʀᴄʟᴏɴᴇ ᴄᴏɴғɪɢ :</i></b> <i>{RCLONE}</i>
 ┠<b><i> ᴍɪʀʀᴏʀ ᴘʀᴇғɪx :</i></b> <code>{MPREFIX}</code>
@@ -285,9 +291,11 @@ class WZMLStyle:
 ┠<b><i> ᴅᴅʟ sᴇʀᴠᴇʀ(s) :</i></b> <i>{DDL_SERVER}</i>
 ┠<b><i> ᴜsᴇʀ ᴛᴅ ᴍᴏᴅᴇ :</i></b> <i>{TMODE}</i>
 ┠<b><i> ᴛᴏᴛᴀʟ ᴜsᴇʀ ᴛᴅ(s) :</i></b> <i>{USERTD}</i>
-┖<b><i> ᴅᴀɪʟʏ ᴍɪʀʀᴏʀ :</i></b> <code>{DM}</code> per day"""
+┠<b><i> ᴅᴀɪʟʏ ᴍɪʀʀᴏʀ :</i></b> <code>{DM}</code> per day
+╰───────✦✧✦───────✘"""
 
-    LEECH = """<b><i>㊂ ʟᴇᴇᴄʜ sᴇᴛᴛɪɴɢs ғᴏʀ {NAME}</i></b>
+    LEECH = """╭───────✦✧✦───────✘
+    <b><i>㊂ ʟᴇᴇᴄʜ sᴇᴛᴛɪɴɢs ғᴏʀ {NAME}</i></b>
 
 ┎<b><i> ᴅᴀɪʟʏ ʟᴇᴇᴄʜ : </i></b><code>{DL}</code> per day
 ┠<b><i> ʟᴇᴇᴄʜ ᴛʏᴘᴇ :</i></b> <i>{LTYPE}</i>
@@ -300,4 +308,5 @@ class WZMLStyle:
 ┠<b><i> ʟᴇᴇᴄʜ sᴜғғɪx :</i></b> <code>{LSUFFIX}</code>
 ┠<b><i> ʟᴇᴇᴄʜ ᴅᴜᴍᴘs :</i></b> <code>{LDUMP}</code>
 ┠<b><i> ʟᴇᴇᴄʜ ʀᴇᴍɴᴀᴍᴇ :</i></b> <code>{LREMNAME}</code>
-┖<b><i> ʟᴇᴇᴄʜ ᴍᴇᴛᴀᴅᴀᴛᴀ :</i></b> <code>{LMETA}</code>"""
+┖<b><i> ʟᴇᴇᴄʜ ᴍᴇᴛᴀᴅᴀᴛᴀ :</i></b> <code>{LMETA}</code>
+╰───────✦✧✦───────✘"""
