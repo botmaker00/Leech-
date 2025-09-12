@@ -256,7 +256,7 @@ class WZMLStyle:
     # ---------------------
 
     # USER Setting --> user_setting.py
-USER_SETTING = """╭───────✦✧✦───────✘ 
+    USER_SETTING = """╭───────✦✧✦───────✘ 
 <blockquote><b><i>㊂ ᴜsᴇʀ sᴇᴛᴛɪɴɢs :</i></b>
         
 ┎ <b><i>ɴᴀᴍᴇ :</i></b> {NAME} ( <code>{ID}</code> )
