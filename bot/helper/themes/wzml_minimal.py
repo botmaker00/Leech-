@@ -208,7 +208,7 @@ class WZMLStyle:
     CANCEL = "<b><i>\n┖ {Cancel}\n\n</i></b>"
 
     ####------FOOTER--------
-    FOOTER = "╭───────✦✧✦───────✘ ⌬ <b><i>ʙᴏᴛ sᴛᴀᴛs</i></b>"
+    FOOTER = "╭───────✦✧✦───────✘\n ⌬ <b><i>ʙᴏᴛ sᴛᴀᴛs</i></b>"
     TASKS = "<b><i>┠ ᴛᴀsᴋs:</i></b> {Tasks}\n"
     BOT_TASKS = "<b><i>┠ ᴛᴀsᴋs:</i></b> {Tasks}/{Ttask} | <b><i>ᴀᴠʟ:</i></b> {Free}\n"
     Cpu = "<b><i>┠ ᴄᴘᴜ:</i></b> {cpu}% | "
