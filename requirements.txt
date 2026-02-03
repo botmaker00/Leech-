@@ -35,7 +35,7 @@ python-dotenv
 pyshorteners
 python-magic
 pymongo
-pyrofork==2.2.11
+git+https://github.com/Mayuri-Chan/pyrofork.git
 quoters
 qbittorrent-api
 requests
