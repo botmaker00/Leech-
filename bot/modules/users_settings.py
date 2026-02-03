@@ -45,6 +45,7 @@ desp_dict = {'rcc': ['RCʟᴏɴᴇ ɪs ᴀ ᴄᴏᴍᴍᴀɴᴅ-ʟɪɴᴇ ᴘʀ�
             'streamtape': ['Sᴛʀᴇᴀᴍᴛᴀᴘᴇ ɪs ғʀᴇᴇ Vɪᴅᴇᴏ Sᴛʀᴇᴀᴍɪɴɢ & sʜᴀʀɪɴɢ Hᴏsᴛᴇʀ', "Sᴇɴᴅ SᴛʀᴇᴀᴍTᴀᴘᴇ's Lᴏɢɪɴ ᴀɴᴅ Kᴇʏ\n<b>Fᴏʀᴍᴀᴛ:</b> <code>ᴜsᴇʀ_ʟᴏɢɪɴ:ᴘᴀss_ᴋᴇʏ</code>\n<b>Tɪᴍᴇᴏᴜᴛ:</b> 𝟼𝟶 sᴇᴄ"],
             'lattachment': ['Aᴛᴛᴀᴄʜᴍᴇɴᴛ ᴜʀʟ, ɪᴛ ᴡɪʟʟ ᴀᴅᴅᴇᴅ ɪɴ ᴍᴋᴠ ᴀs ᴛʜᴜᴍʙɴᴀɪʟ ᴏʀ ᴄᴏᴠᴇʀ ᴘʜᴏᴛᴏ, ᴡʜᴇᴛᴇᴠᴇʀ ʏᴏᴜ sᴀʏ.', 'Sᴇɴᴅ Tᴇʟᴇɢʀᴀᴘʜ ᴘʜᴏᴛᴏ ᴜʀʟ\ɴ\ɴ<ʙ>Tɪᴍᴇᴏᴜᴛ: 𝟼𝟶 sᴇᴄ'],
             'lmeta': ['Yᴏᴜʀ ᴄʜᴀɴɴᴇʟ ɴᴀᴍᴇ ᴛʜᴀᴛ ᴡɪʟʟ ʙᴇ ᴜsᴇᴅ ᴡʜɪʟᴇ ᴇᴅɪᴛɪɴɢ ᴍᴇᴛᴀᴅᴀᴛᴀ ᴏғ ᴛʜᴇ ᴠɪᴅᴇᴏ ғɪʟᴇ', 'Sᴇɴᴅ Mᴇᴛᴀᴅᴀᴛᴀ Tᴇxᴛ Fᴏʀ Lᴇᴇᴄʜɪɴɢ Fɪʟᴇs. \n <b>Wʜᴀᴛ ɪs Mᴇᴛᴀᴅᴀᴛᴀ? 👉 <a href="https://te.legra.ph/What-is-Metadata-07-03">Cʟɪᴄᴋ Hᴇʀᴇ</a></b> \n<b>Tɪᴍᴇᴏᴜᴛ:</b> 𝟼𝟶 sᴇᴄ.'],
+            'format': ['Format to rename files. Use <code>{season}</code>, <code>{episode}</code>, <code>{quality}</code>, <code>{audio}</code> as placeholders.', 'Send the format string.\nExample: <code>MySeries - S{season}E{episode} [{quality}] {audio}</code>\n\n<b>Timeout:</b> 60 sec'],
             }
 fname_dict = {'rcc': 'RCʟᴏɴᴇ',
              'lprefix': 'Pʀᴇғɪx',
@@ -52,6 +53,7 @@ fname_dict = {'rcc': 'RCʟᴏɴᴇ',
              'lremname': 'Rᴇᴍɴᴀᴍᴇ',
              'lmeta': 'Mᴇᴛᴀᴅᴀᴛᴀ',
              'lattachment': 'ᴀᴛᴛᴀᴄʜᴍᴇɴᴛ',
+             'format': 'Fᴏʀᴍᴀᴛ',
              'mprefix': 'Pʀᴇғɪx',
              'msuffix': 'Suffix',
              'mremname': 'Rᴇᴍɴᴀᴍᴇ',
@@ -179,6 +181,9 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
         lmeta = 'Nᴏᴛ Exɪsᴛs' if (val:=user_dict.get('lmeta', config_dict.get('METADATA', ''))) == '' else val
         buttons.ibutton(f"{'✅️' if lmeta != 'Nᴏᴛ Exɪsᴛs' else ''} Mᴇᴛᴀᴅᴀᴛᴀ", f"userset {user_id} lmeta")
 
+        lformat = 'Nᴏᴛ Exɪsᴛs' if (val:=user_dict.get('format', '')) == '' else val
+        buttons.ibutton(f"{'✅️' if lformat != 'Nᴏᴛ Exɪsᴛs' else ''} Fᴏʀᴍᴀᴛ", f"userset {user_id} format")
+
         lattachment = user_dict.get('lattachment', '')
         attachmsg = "Exɪsᴛs" if lattachment else "Nᴏᴛ Exɪsᴛs"
         buttons.ibutton(f"{'✅' if lattachment else ''} ᴀᴛᴛᴀᴄʜᴍᴇɴᴛ", f"userset {user_id} lattachment")
@@ -187,7 +192,7 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
                 LTYPE=ltype, THUMB=thumbmsg, SPLIT_SIZE=split_size,
                 EQUAL_SPLIT=equal_splits, MEDIA_GROUP=media_group,
                 LCAPTION=escape(lcaption), LPREFIX=escape(lprefix),
-                LSUFFIX=escape(lsuffix), LDUMP=ldump, LREMNAME=escape(lremname), LATTACHMENT=attachmsg, LMETA=escape(lmeta))
+                LSUFFIX=escape(lsuffix), LDUMP=ldump, LREMNAME=escape(lremname), LATTACHMENT=attachmsg, LMETA=escape(lmeta), FORMAT=escape(lformat))
 
         buttons.ibutton("◀️", f"userset {user_id} back", "footer")
         buttons.ibutton("❌", f"userset {user_id} close", "footer")
@@ -232,8 +237,11 @@ async def get_user_settings(from_user, key=None, edit_type=None, edit_mode=None)
                 buttons.ibutton("Dɪsᴀʙʟᴇ Mᴇᴅɪᴀ Gʀᴏᴜᴘ", f"userset {user_id} mgroup", "header")
             else:
                 buttons.ibutton("Eɴᴀʙʟᴇ Mᴇᴅɪᴀ Gʀᴏᴜᴘ", f"userset {user_id} mgroup", "header")
-        elif key in ['lprefix', 'lremname', 'lsuffix', 'lcaption', 'ldump', 'lmeta', 'lattachment']:
-            set_exist = 'Nᴏᴛ Exɪsᴛs' if (val:=user_dict.get(key, config_dict.get(f'LEECH_FILENAME_{key[1:].upper()}', ''))) == '' else val
+        elif key in ['lprefix', 'lremname', 'lsuffix', 'lcaption', 'ldump', 'lmeta', 'lattachment', 'format']:
+            if key == 'format':
+                 set_exist = 'Nᴏᴛ Exɪsᴛs' if (val:=user_dict.get(key, '')) == '' else val
+            else:
+                 set_exist = 'Nᴏᴛ Exɪsᴛs' if (val:=user_dict.get(key, config_dict.get(f'LEECH_FILENAME_{key[1:].upper()}', ''))) == '' else val
             if set_exist != 'Nᴏᴛ Exɪsᴛs' and key == "ldump":
                 set_exist = '\n\n' + '\n'.join([f"{index}. <b>{dump}</b> : <code>{ids}</code>" for index, (dump, ids) in enumerate(val.items(), start=1)])
             text += f"➲ <b>Lᴇᴇᴄʜ Fɪʟᴇɴᴀᴍᴇ {fname_dict[key]} :</b> {set_exist}\n\n"
@@ -286,7 +294,7 @@ async def user_settings(client, message):
         if set_arg and (reply_to := message.reply_to_message):
             if message.from_user.id != reply_to.from_user.id:
                 return await editMessage(msg, '<i>Rᴇᴘʟʏ ᴛᴏ Yᴏᴜʀ Oᴡɴ Mᴇssᴀɢᴇ ғᴏʀ Sᴇᴛᴛɪɴɢ ᴠɪᴀ Aʀɢs Dɪʀᴇᴄᴛʟʏ</i>')
-            if set_arg in ['lprefix', 'lsuffix', 'lremname', 'lcaption', 'ldump', 'yt_opt', 'lmeta', 'lattachment'] and reply_to.text:
+            if set_arg in ['lprefix', 'lsuffix', 'lremname', 'lcaption', 'ldump', 'yt_opt', 'lmeta', 'lattachment', 'format'] and reply_to.text:
                 return await set_custom(client, reply_to, msg, set_arg, True)
             elif set_arg == 'thumb' and reply_to.media:
                 return await set_thumb(client, reply_to, msg, set_arg, True)
@@ -303,6 +311,8 @@ async def user_settings(client, message):
     /cmd -s lremname
 ➲ <b>Lᴇᴇᴄʜ Mᴇᴛᴀᴅᴀᴛᴀ Tᴇxᴛ :</b>
     /cmd -s lmeta
+➲ <b>Lᴇᴇᴄʜ Fᴏʀᴍᴀᴛ :</b>
+    /cmd -s format
 ➲ <b>Lᴇᴇᴄʜ Fɪʟᴇɴᴀᴍᴇ Cᴀᴘᴛɪᴏɴ :</b>
     /cmd -s lcaption
 ➲ <b>Yᴛ-Dʟᴘ Oᴘᴛɪᴏɴs :</b>
@@ -622,21 +632,21 @@ async def edit_user_settings(client, query):
         pfunc = partial(set_custom, pre_event=query, key=data[2])
         rfunc = partial(update_user_settings, query, data[2], 'mirror' if data[2] in ['ddl_servers', 'user_tds'] else "ddl_servers")
         await event_handler(client, query, pfunc, rfunc)
-    elif data[2] in ['lprefix', 'lsuffix', 'lremname', 'lcaption', 'ldump', 'mprefix', 'msuffix', 'mremname', 'lmeta', 'lattachment']:
+    elif data[2] in ['lprefix', 'lsuffix', 'lremname', 'lcaption', 'ldump', 'mprefix', 'msuffix', 'mremname', 'lmeta', 'lattachment', 'format']:
         handler_dict[user_id] = False
         await query.answer()
         edit_mode = len(data) == 4
-        return_key = 'leech' if data[2][0] == 'l' else 'mirror'
+        return_key = 'leech' if data[2][0] == 'l' or data[2] == 'format' else 'mirror'
         await update_user_settings(query, data[2], return_key, edit_mode)
         if not edit_mode: return
         pfunc = partial(set_custom, pre_event=query, key=data[2])
         rfunc = partial(update_user_settings, query, data[2], return_key)
         await event_handler(client, query, pfunc, rfunc)
-    elif data[2] in ['dlprefix', 'dlsuffix', 'dlremname', 'dlcaption', 'dldump', 'dlmeta', 'dlattachment']:
+    elif data[2] in ['dlprefix', 'dlsuffix', 'dlremname', 'dlcaption', 'dldump', 'dlmeta', 'dlattachment', 'dformat']:
         handler_dict[user_id] = False
         await query.answer()
-        update_user_ldata(user_id, data[2][1:], {} if data[2] == 'dldump' else '')
-        await update_user_settings(query, data[2][1:], 'leech')
+        update_user_ldata(user_id, data[2][1:] if data[2] != 'dformat' else 'format', {} if data[2] == 'dldump' else '')
+        await update_user_settings(query, data[2][1:] if data[2] != 'dformat' else 'format', 'leech')
         if DATABASE_URL:
             await DbManger().update_user_data(user_id)
     elif data[2] in ['dmprefix', 'dmsuffix', 'dmremname', 'duser_tds']:
