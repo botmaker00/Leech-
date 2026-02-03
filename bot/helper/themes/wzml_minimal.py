@@ -352,6 +352,7 @@ class WZMLStyle:
     ┠ <b><i>📝 Leech Suffix:</i></b> <code>{LSUFFIX}</code>
     ┠ <b><i>📤 Leech Dumps:</i></b> <code>{LDUMP}</code>
     ┠ <b><i>📝 Leech Rename:</i></b> <code>{LREMNAME}</code>
+    ┠ <b><i>📝 Leech Format:</i></b> <code>{FORMAT}</code>
     ┖ <b><i>📄 Leech Metadata:</i></b> <code>{LMETA}</code>
     ╰───────✦✧✦──────✘
     """
