@@ -7,7 +7,7 @@ from pytz import timezone
 from datetime import datetime
 from urllib.parse import unquote, quote
 from requests import utils as rutils
-from aiofiles.os import path as aiopath, remove as aioremove, listdir, makedirs
+from aiofiles.os import path as aiopath, remove as aioremove, listdir, makedirs, rename as aiorename
 from os import walk, path as ospath
 from html import escape
 from aioshutil import move
@@ -42,6 +42,7 @@ from bot.helper.telegram_helper.message_utils import sendCustomMsg, sendMessage,
 from bot.helper.telegram_helper.button_build import ButtonMaker
 from bot.helper.ext_utils.db_handler import DbManger
 from bot.helper.themes import BotTheme
+from bot.helper.file_rename import rename_tree, build_renamed_path
 
 
 class MirrorLeechListener:
@@ -204,6 +205,9 @@ class MirrorLeechListener:
         if self.join and await aiopath.isdir(dl_path):
             await join_files(dl_path)
 
+        if not self.extract and self.user_dict.get('format') and await aiopath.isfile(dl_path) and is_archive(dl_path):
+            self.extract = True
+
         if self.extract:
             pswd = self.extract if isinstance(self.extract, str) else ''
             try:
@@ -276,6 +280,26 @@ class MirrorLeechListener:
                 LOGGER.info("Not any valid archive, uploading file as it is.")
                 self.newDir = ""
                 up_path = dl_path
+
+        if self.user_dict.get('format'):
+            if self.extract:
+                target = up_path
+            else:
+                target = dl_path
+
+            if await aiopath.isfile(target):
+                new_name = build_renamed_path(ospath.basename(target), self.user_id)
+                new_path = ospath.join(ospath.dirname(target), new_name)
+                if new_path != target:
+                    await aiorename(target, new_path)
+                    target = new_path
+            elif await aiopath.isdir(target):
+                target, _ = await sync_to_async(rename_tree, target, self.user_id)
+
+            if self.extract:
+                up_path = target
+            else:
+                dl_path = target
 
         if metadata := self.user_dict.get('lmeta') or config_dict['METADATA']:
             meta_path = up_path or dl_path
