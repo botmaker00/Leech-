@@ -17,7 +17,7 @@ from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.ext_utils.db_handler import DbManger
 from bot.helper.telegram_helper.button_build import ButtonMaker
-from bot.helper.ext_utils.bot_utils import new_thread
+from bot.helper.ext_utils.bot_utils import new_thread, new_task
 from bot.helper.ext_utils.exceptions import RssShutdownException
 from bot.helper.ext_utils.help_messages import RSS_HELP_MESSAGE
 
@@ -355,6 +355,7 @@ async def rssDelete(client, message, pre_event):
     await updateRssMenu(pre_event)
 
 
+@new_task
 async def event_handler(client, query, pfunc):
     user_id = query.from_user.id
     handler_dict[user_id] = True
@@ -397,7 +398,7 @@ async def rssListener(client, query):
         button = buttons.build_menu(2)
         await editMessage(message, RSS_HELP_MESSAGE, button)
         pfunc = partial(rssSub, pre_event=query)
-        await event_handler(client, query, pfunc)
+        event_handler(client, query, pfunc)
     elif data[1] == 'list':
         handler_dict[user_id] = False
         if len(rss_dict.get(int(data[2]), {})) == 0:
@@ -418,7 +419,7 @@ async def rssListener(client, query):
             button = buttons.build_menu(2)
             await editMessage(message, 'Send one title with value separated by space get last X items.\nTitle Value\nTimeout: 60 sec.', button)
             pfunc = partial(rssGet, pre_event=query)
-            await event_handler(client, query, pfunc)
+            event_handler(client, query, pfunc)
     elif data[1] in ['unsubscribe', 'pause', 'resume']:
         handler_dict[user_id] = False
         if len(rss_dict.get(int(data[2]), {})) == 0:
@@ -438,7 +439,7 @@ async def rssListener(client, query):
             button = buttons.build_menu(2)
             await editMessage(message, f'Send one or more rss titles separated by space to {data[1]}.\nTimeout: 60 sec.', button)
             pfunc = partial(rssUpdate, pre_event=query, state=data[1])
-            await event_handler(client, query, pfunc)
+            event_handler(client, query, pfunc)
     elif data[1] == 'edit':
         handler_dict[user_id] = False
         if len(rss_dict.get(int(data[2]), {})) == 0:
@@ -459,7 +460,7 @@ Timeout: 60 sec. Argument -c for command and options
             '''
             await editMessage(message, msg, button)
             pfunc = partial(rssEdit, pre_event=query)
-            await event_handler(client, query, pfunc)
+            event_handler(client, query, pfunc)
     elif data[1].startswith('uall'):
         handler_dict[user_id] = False
         if len(rss_dict.get(int(data[2]), {})) == 0:
@@ -531,7 +532,7 @@ Timeout: 60 sec. Argument -c for command and options
             msg = 'Send one or more user_id separated by space to delete their resources.\nTimeout: 60 sec.'
             await editMessage(message, msg, button)
             pfunc = partial(rssDelete, pre_event=query)
-            await event_handler(client, query, pfunc)
+            event_handler(client, query, pfunc)
     elif data[1] == 'listall':
         if not rss_dict:
             await query.answer(text="No subscriptions!", show_alert=True)

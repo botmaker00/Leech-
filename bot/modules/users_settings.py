@@ -21,7 +21,7 @@ from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.telegram_helper.button_build import ButtonMaker
 from bot.helper.mirror_utils.upload_utils.gdriveTools import GoogleDriveHelper
 from bot.helper.ext_utils.db_handler import DbManger
-from bot.helper.ext_utils.bot_utils import getdailytasks, update_user_ldata, get_readable_file_size, sync_to_async, new_thread, is_gdrive_link
+from bot.helper.ext_utils.bot_utils import getdailytasks, update_user_ldata, get_readable_file_size, sync_to_async, new_thread, new_task, is_gdrive_link
 from bot.helper.mirror_utils.upload_utils.ddlserver.gofile import Gofile
 from bot.helper.themes import BotTheme
 
@@ -440,6 +440,7 @@ async def leech_split_size(client, message, pre_event):
         await DbManger().update_user_data(user_id)
 
 
+@new_task
 async def event_handler(client, query, pfunc, rfunc, photo=False, document=False):
     user_id = query.from_user.id
     handler_dict[user_id] = True
@@ -524,7 +525,7 @@ async def edit_user_settings(client, query):
         if not edit_mode: return
         pfunc = partial(set_thumb, pre_event=query, key=data[2])
         rfunc = partial(update_user_settings, query, data[2], 'leech')
-        await event_handler(client, query, pfunc, rfunc, True)
+        event_handler(client, query, pfunc, rfunc, True)
     elif data[2] in ['yt_opt', 'usess']:
         await query.answer()
         edit_mode = len(data) == 4
@@ -532,7 +533,7 @@ async def edit_user_settings(client, query):
         if not edit_mode: return
         pfunc = partial(set_custom, pre_event=query, key=data[2])
         rfunc = partial(update_user_settings, query, data[2], 'universal')
-        await event_handler(client, query, pfunc, rfunc)
+        event_handler(client, query, pfunc, rfunc)
     elif data[2] in ['dyt_opt', 'dusess']:
         handler_dict[user_id] = False
         await query.answer()
@@ -564,7 +565,7 @@ async def edit_user_settings(client, query):
         if not edit_mode: return
         pfunc = partial(leech_split_size, pre_event=query)
         rfunc = partial(update_user_settings, query, data[2], 'leech')
-        await event_handler(client, query, pfunc, rfunc)
+        event_handler(client, query, pfunc, rfunc)
     elif data[2] == 'dsplit_size':
         handler_dict[user_id] = False
         await query.answer()
@@ -609,7 +610,7 @@ async def edit_user_settings(client, query):
         if not edit_mode: return
         pfunc = partial(add_rclone, pre_event=query)
         rfunc = partial(update_user_settings, query, data[2], 'mirror')
-        await event_handler(client, query, pfunc, rfunc, document=True)
+        event_handler(client, query, pfunc, rfunc, document=True)
     elif data[2] == 'drcc':
         handler_dict[user_id] = False
         if await aiopath.exists(rclone_path):
@@ -630,7 +631,7 @@ async def edit_user_settings(client, query):
         if not edit_mode: return
         pfunc = partial(set_custom, pre_event=query, key=data[2])
         rfunc = partial(update_user_settings, query, data[2], 'mirror' if data[2] in ['ddl_servers', 'user_tds'] else "ddl_servers")
-        await event_handler(client, query, pfunc, rfunc)
+        event_handler(client, query, pfunc, rfunc)
     elif data[2] in ['lprefix', 'lsuffix', 'lremname', 'lcaption', 'ldump', 'mprefix', 'msuffix', 'mremname', 'lmeta', 'lattachment', 'format']:
         handler_dict[user_id] = False
         await query.answer()
@@ -640,7 +641,7 @@ async def edit_user_settings(client, query):
         if not edit_mode: return
         pfunc = partial(set_custom, pre_event=query, key=data[2])
         rfunc = partial(update_user_settings, query, data[2], return_key)
-        await event_handler(client, query, pfunc, rfunc)
+        event_handler(client, query, pfunc, rfunc)
     elif data[2] in ['dlprefix', 'dlsuffix', 'dlremname', 'dlcaption', 'dldump', 'dlmeta', 'dlattachment', 'dformat']:
         handler_dict[user_id] = False
         await query.answer()
