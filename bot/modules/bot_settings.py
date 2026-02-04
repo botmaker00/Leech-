@@ -1056,7 +1056,6 @@ async def event_handler(client, query, pfunc, rfunc, document=False):
     client.remove_handler(*handler)
 
 
-@new_thread
 async def edit_bot_settings(client, query):
     data = query.data.split()
     message = query.message

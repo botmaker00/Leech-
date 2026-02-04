@@ -373,7 +373,6 @@ async def event_handler(client, query, pfunc):
     client.remove_handler(*handler)
 
 
-@new_thread
 async def rssListener(client, query):
     user_id = query.from_user.id
     message = query.message
