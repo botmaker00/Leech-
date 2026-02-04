@@ -23,7 +23,6 @@ from bot.helper.ext_utils.help_messages import YT_HELP_MESSAGE
 from bot.helper.ext_utils.bulk_links import extract_bulk_links
 
 
-@new_task
 async def select_format(_, query, obj):
     data = query.data.split()
     message = query.message
