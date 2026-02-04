@@ -22,7 +22,6 @@ session_dict = {}
 session_lock = Lock()
 isStop = False
 
-@new_task
 async def genPyroString(client, message):
     global isStop
     session_dict.clear()
