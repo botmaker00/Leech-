@@ -330,6 +330,8 @@ async def set_custom(client, message, pre_event, key, direct=False):
     user_id = message.from_user.id
     handler_dict[user_id] = False
     value = message.text
+    if value:
+        value = value.strip()
     return_key = 'leech'
     n_key = key
     user_dict = user_data.get(user_id, {})
@@ -453,7 +455,7 @@ async def event_handler(client, query, pfunc, rfunc, photo=False, document=False
         else:
             mtype = event.text
         user = event.from_user or event.sender_chat
-        return bool(user.id == user_id and event.chat.id == query.message.chat.id and mtype)
+        return bool(user and user.id == user_id and event.chat.id == query.message.chat.id and mtype)
         
     handler = client.add_handler(MessageHandler(
         pfunc, filters=create(event_filter)), group=-1)
