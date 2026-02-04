@@ -19,7 +19,7 @@ from bot.helper.telegram_helper.message_utils import sendMessage, sendFile, edit
 from bot.helper.telegram_helper.filters import CustomFilters
 from bot.helper.telegram_helper.bot_commands import BotCommands
 from bot.helper.telegram_helper.button_build import ButtonMaker
-from bot.helper.ext_utils.bot_utils import setInterval, sync_to_async, new_thread
+from bot.helper.ext_utils.bot_utils import setInterval, sync_to_async, new_thread, new_task
 from bot.helper.ext_utils.db_handler import DbManger
 from bot.helper.ext_utils.task_manager import start_from_queued
 from bot.helper.ext_utils.help_messages import default_desp
@@ -1038,6 +1038,7 @@ async def update_private_file(_, message, pre_message):
         await remove('accounts.zip')
 
 
+@new_task
 async def event_handler(client, query, pfunc, rfunc, document=False):
     chat_id = query.message.chat.id
     handler_dict[chat_id] = True
@@ -1177,7 +1178,7 @@ async def edit_bot_settings(client, query):
         await update_buttons(message, data[1])
         pfunc = partial(update_private_file, pre_message=message)
         rfunc = partial(update_buttons, message)
-        await event_handler(client, query, pfunc, rfunc, True)
+        event_handler(client, query, pfunc, rfunc, True)
     elif data[1] == 'boolvar':
         handler_dict[message.chat.id] = False
         value = data[3] == "on"
@@ -1197,7 +1198,7 @@ async def edit_bot_settings(client, query):
             return
         pfunc = partial(edit_variable, pre_message=message, key=data[2])
         rfunc = partial(update_buttons, message, data[2], data[1], edit_mode)
-        await event_handler(client, query, pfunc, rfunc)
+        event_handler(client, query, pfunc, rfunc)
     elif data[1] == 'showvar':
         value = config_dict[data[2]]
         if len(str(value)) > 200:
@@ -1215,7 +1216,7 @@ async def edit_bot_settings(client, query):
         await update_buttons(message, data[2], data[1])
         pfunc = partial(edit_aria, pre_message=message, key=data[2])
         rfunc = partial(update_buttons, message, 'aria')
-        await event_handler(client, query, pfunc, rfunc)
+        event_handler(client, query, pfunc, rfunc)
     elif data[1] == 'editaria' and STATE == 'view':
         value = aria2_options[data[2]]
         if len(str(value)) > 200:
@@ -1233,7 +1234,7 @@ async def edit_bot_settings(client, query):
         await update_buttons(message, data[2], data[1])
         pfunc = partial(edit_qbit, pre_message=message, key=data[2])
         rfunc = partial(update_buttons, message, 'var')
-        await event_handler(client, query, pfunc, rfunc)
+        event_handler(client, query, pfunc, rfunc)
     elif data[1] == 'editqbit' and STATE == 'view':
         value = qbit_options[data[2]]
         if len(str(value)) > 200:
